@@ -1,0 +1,73 @@
+import pandas as pd
+
+train_df = pd.read_csv("/kaggle/input/genre-classification-dataset-imdb/Genre Classification Dataset/train_data.txt",
+                       engine="python",
+                       sep=" ::: ",
+                       names=["id", "movie", "genre", "summary"])
+
+test_df = pd.read_csv("/kaggle/input/genre-classification-dataset-imdb/Genre Classification Dataset/test_data_solution.txt",
+                      engine="python",
+                      sep=" ::: ",
+                      names=["id", "movie", "genre", "summary"])
+  # Viewing training data
+train_df.head()
+  # Viewing test data
+test_df.head()
+  train_shuffled = train_df.sample(frac=1)
+  from sklearn.model_selection import train_test_split
+​
+X_train, X_val, y_train, y_val = train_test_split(train_shuffled["summary"],
+                                                 train_shuffled["genre"],
+                                                 test_size=0.1)
+X_test, y_test = test_df["summary"], test_df["genre"]
+  from sklearn.preprocessing import OneHotEncoder
+
+ohe = OneHotEncoder(sparse=False)
+ohe.fit(train_shuffled["genre"].to_numpy().reshape(-1,1)) # Fit the encoder to genre of training data
+
+train_ohe = ohe.transform(y_train.to_numpy().reshape(-1, 1))
+val_ohe = ohe.transform(y_val.to_numpy().reshape(-1,1))
+test_ohe = ohe.transform(y_test.to_numpy().reshape(-1,1))
+  train_sentences = X_train.tolist()
+val_sentences = X_val.tolist()
+test_sentences = X_test.tolist()
+  import tensorflow_hub as hub
+embedding_layer = hub.KerasLayer("https://tfhub.dev/google/universal-sentence-encoder/4",
+                                        trainable=False,
+                                        name="universal_sentence_encoder")
+add Codeadd Markdown
+Creating Dataset
+add Codeadd Markdown
+from tensorflow.data import Dataset as tfd
+import tensorflow as tf
+​
+AUTOTUNE = tf.data.AUTOTUNE
+​
+train_dataset = tfd.from_tensor_slices((X_train, train_ohe)).batch(32).prefetch(AUTOTUNE)
+val_dataset = tfd.from_tensor_slices((X_val, val_ohe)).batch(32).prefetch(AUTOTUNE)
+test_dataset = tfd.from_tensor_slices((X_test, test_ohe)).batch(32).prefetch(AUTOTUNE)
+​
+train_dataset, val_dataset, test_dataset
+  
+classes = len(train_shuffled["genre"].value_counts())
+
+# Building the model
+from tensorflow.keras import layers
+​
+inputs = layers.Input(shape=[], dtype="string")
+x = embedding_layer(inputs)
+x = layers.Dense(512, activation="relu")(x)
+outputs = layers.Dense(classes, activation="softmax")(x)
+​
+model = tf.keras.Model(inputs, outputs)
+model.compile(loss="categorical_crossentropy",
+              optimizer=tf.keras.optimizers.Adam(),
+              metrics=["accuracy"])
+model.summary()
+
+history = model.fit(train_dataset,
+                  steps_per_epoch=int(0.1*len(train_dataset)),
+                  epochs=5,
+                  validation_data=val_dataset,
+                  validation_steps=int(0.1*len(val_dataset)))
+model.evaluate(test_dataset)
