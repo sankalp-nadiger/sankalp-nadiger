@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @sankalp-nadiger
 - 👀 I’m interested in Machine Learning and other booming technologies
 - 🌱 I’m currently learning more on NLP
-- 💞️ I’m looking to collaborate on projects that might be relevant in real-time problems and finding a solution to even simple problems that can help illions of people
+- 💞️ I’m looking to collaborate on projects that might be relevant in real-time problems and finding a solution to even simple problems that can help millions of people
 - 📫 How to reach me Email-nadigersankalp@gmail.com
 
 <!---
