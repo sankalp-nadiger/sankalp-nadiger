@@ -1,6 +1,15 @@
 # 💫 About Me:
-👋 Hi, I’m @sankalp-nadiger<br>👀 I’m interested in Machine Learning, Backend Development and other booming technologies<br>🌱 I’m currently learning more on NLP & advanced backend development<br>💞️ I’m looking to collaborate on projects that might be relevant in real-time problems and finding a solution to even simple problems that can help millions of people<br>📫 How to reach me Email-sankalp.nss@gmail.com<br><br>As a Reliance Foundation scholar, I look out for impactful solutions & innovation.
+👋 Hi, I’m **@sankalp-nadiger**<br>  
+👀 I’m interested in **Machine Learning, Backend Development**, and other booming technologies.<br>  
+🌱 I’m currently learning more about **NLP & advanced backend development**.<br>  
+💞️ I’m looking to collaborate on projects that address **real-world problems**, whether simple or complex, to create solutions that can help millions.<br>  
+📫 How to reach me: **Email - sankalp.nss@gmail.com**<br><br>  
 
+🏆 **Hackathon Enthusiast & Innovator**<br>  
+I've won multiple **hackathons** namely Infothon & Sustain-AI-thon and consistently ranked in the **Top 30** in several national competitions like Daksh AI, Build India and Vertex Innovate building impactful tech solutions.<br><br>  
+
+🚀 **Reliance Foundation Scholar**<br>  
+As a **Reliance Foundation scholar**, I am passionate about driving **innovation** and crafting **impactful solutions** that make a difference.<br>
 
 ## 🌐 Socials:
 [![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?logo=discord&logoColor=white)](https://discord.gg/discord.gg/3XunjSBF ) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:sankalp.nss@gmail.com) 
